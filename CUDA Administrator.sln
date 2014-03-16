@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDA Administrator", "CUDA Administrator\CUDA Administrator.csproj", "{C5F2C90B-E216-4F3E-A0CF-BBF94013AF28}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UI", "UI\UI.vbproj", "{DD768EE3-3602-4E2B-9062-A2FCC900889A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A5FE6FE0-53DB-43FB-BAF8-31312BDE2518}"
+	ProjectSection(SolutionItems) = preProject
+		Libraries\Microsoft.Win32.TaskScheduler.dll = Libraries\Microsoft.Win32.TaskScheduler.dll
+		Libraries\Newtonsoft.Json.dll = Libraries\Newtonsoft.Json.dll
+		Libraries\OpenHardwareMonitorLib.dll = Libraries\OpenHardwareMonitorLib.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D1A8E3D-0E54-450A-B7BF-159CECD5D611}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5F2C90B-E216-4F3E-A0CF-BBF94013AF28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5F2C90B-E216-4F3E-A0CF-BBF94013AF28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5F2C90B-E216-4F3E-A0CF-BBF94013AF28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5F2C90B-E216-4F3E-A0CF-BBF94013AF28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD768EE3-3602-4E2B-9062-A2FCC900889A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD768EE3-3602-4E2B-9062-A2FCC900889A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD768EE3-3602-4E2B-9062-A2FCC900889A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD768EE3-3602-4E2B-9062-A2FCC900889A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

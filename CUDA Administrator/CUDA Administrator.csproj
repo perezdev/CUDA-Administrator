@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5F2C90B-E216-4F3E-A0CF-BBF94013AF28}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CUDA_Administrator</RootNamespace>
+    <AssemblyName>CUDA Administrator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ca.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.TaskScheduler">
+      <HintPath>..\Libraries\Microsoft.Win32.TaskScheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenHardwareMonitorLib">
+      <HintPath>..\Libraries\OpenHardwareMonitorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Calls\Devices\DevicesCall.cs" />
+    <Compile Include="Calls\Miner\MinerCall.cs" />
+    <Compile Include="Calls\OptionsCall\OptionsCall.cs" />
+    <Compile Include="Calls\Setting\SettingCall.cs" />
+    <Compile Include="Calls\ScheduleTasks\ScheduleTask.cs" />
+    <Compile Include="Controls\MessageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MessageControl.Designer.cs">
+      <DependentUpon>MessageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MinerConsole.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MinerConsole.Designer.cs">
+      <DependentUpon>MinerConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TablessTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TablessTabControl.Designer.cs">
+      <DependentUpon>TablessTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Devices\GpuTemp.cs" />
+    <Compile Include="Data\Devices\VideoCard.cs" />
+    <Compile Include="Data\Miner\CpuMinerData.cs" />
+    <Compile Include="Data\Miner\GpuMinerData.cs" />
+    <Compile Include="Data\Options\OptionsData.cs" />
+    <Compile Include="Data\Setting\Settings.cs" />
+    <Compile Include="Data\Setting\SettingsData.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDonate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDonate.Designer.cs">
+      <DependentUpon>frmDonate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMiner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMiner.Designer.cs">
+      <DependentUpon>frmMiner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\FileManager.cs" />
+    <Compile Include="Notify\UserMessage.cs" />
+    <Compile Include="Nvidia API\Collections\IReadOnly.cs" />
+    <Compile Include="Nvidia API\Collections\ListSet.cs" />
+    <Compile Include="Nvidia API\Collections\Pair.cs" />
+    <Compile Include="Nvidia API\Collections\ReadOnlyArray.cs" />
+    <Compile Include="Nvidia API\Collections\RingCollection.cs" />
+    <Compile Include="Nvidia API\Hardware\Control.cs" />
+    <Compile Include="Nvidia API\Hardware\Hardware.cs" />
+    <Compile Include="Nvidia API\Hardware\IControl.cs" />
+    <Compile Include="Nvidia API\Hardware\Identifier.cs" />
+    <Compile Include="Nvidia API\Hardware\IElement.cs" />
+    <Compile Include="Nvidia API\Hardware\IGroup.cs" />
+    <Compile Include="Nvidia API\Hardware\IHardware.cs" />
+    <Compile Include="Nvidia API\Hardware\IParameter.cs" />
+    <Compile Include="Nvidia API\Hardware\ISensor.cs" />
+    <Compile Include="Nvidia API\Hardware\IVisitor.cs" />
+    <Compile Include="Nvidia API\Hardware\Nvidia\NVAPI.cs" />
+    <Compile Include="Nvidia API\Hardware\Nvidia\NvidiaGPU.cs" />
+    <Compile Include="Nvidia API\Hardware\Nvidia\NvidiaGroup.cs" />
+    <Compile Include="Nvidia API\Hardware\Parameter.cs" />
+    <Compile Include="Nvidia API\Hardware\PInvokeDelegateFactory.cs" />
+    <Compile Include="Nvidia API\Hardware\Sensor.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadSafeExtensions\Extensions.cs" />
+    <EmbeddedResource Include="Controls\MessageControl.resx">
+      <DependentUpon>MessageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MinerConsole.resx">
+      <DependentUpon>MinerConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDonate.resx">
+      <DependentUpon>frmDonate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMiner.resx">
+      <DependentUpon>frmMiner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptions.resx">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UI\UI.vbproj">
+      <Project>{DD768EE3-3602-4E2B-9062-A2FCC900889A}</Project>
+      <Name>UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movedown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moveup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ca.ico" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\tools.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\file.png" />
+    <None Include="Resources\donate.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
