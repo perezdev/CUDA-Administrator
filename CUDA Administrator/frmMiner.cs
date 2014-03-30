@@ -342,7 +342,7 @@ namespace CUDA_Administrator
                 if (!string.IsNullOrEmpty(strError))
                     UserMessage.ShowMessage(this, UserMessage.MessageType.Error, "An error occurred while trying to query the video card list");
                 else
-                    cbxDevice_CudaMiner.Items.Add(card.GPU.Name);
+                    cbxDevice_CudaMiner.Items.Add(card.Name);
             }
         }
         private void SetTips() //Setting the tool tips during design time was causing UI corruption. Happened like 5 times. So I'm just going with this for now. And by "for now", I mean forever

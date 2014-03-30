@@ -9,25 +9,35 @@ namespace CUDA_Administrator.Data.Devices
 {
     public class VideoCard
     {
-        private NvidiaGPU _GPU = null;
-        internal NvidiaGPU GPU
+        private int _Number = 0;
+        public int Number
         {
-            get { return _GPU; }
-            set { _GPU = value; }
+            get { return _Number; }
+            set { _Number = value; }
         }
-
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
         private List<Sensor> _TemperatureSensors = new List<Sensor>();
         internal List<Sensor> TemperatureSensors
         {
             get { return _TemperatureSensors; }
             set { _TemperatureSensors = value; }
         }
-
         private List<Sensor> _FanSensors = new List<Sensor>();
         internal List<Sensor> FanSensors
         {
             get { return _FanSensors; }
             set { _FanSensors = value; }
+        }
+        private List<Sensor> _ClockSensors = new List<Sensor>();
+        internal List<Sensor> ClockSensors
+        {
+            get { return _ClockSensors; }
+            set { _ClockSensors = value; }
         }
     }
 }

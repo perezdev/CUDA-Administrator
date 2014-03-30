@@ -77,6 +77,12 @@
     <Compile Include="Controls\MinerConsole.Designer.cs">
       <DependentUpon>MinerConsole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NvidiaDisplayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NvidiaDisplayControl.Designer.cs">
+      <DependentUpon>NvidiaDisplayControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TablessTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MinerConsole.resx">
       <DependentUpon>MinerConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NvidiaDisplayControl.resx">
+      <DependentUpon>NvidiaDisplayControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>

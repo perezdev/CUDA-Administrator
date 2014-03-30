@@ -14,11 +14,16 @@ namespace CUDA_Administrator.Calls.Devices
         {
             List<VideoCard> cards = new List<VideoCard>();
 
+            int index = 0;
             NvidiaGroup gpus = new NvidiaGroup();
             foreach (NvidiaGPU gpu in gpus.Hardware)
             {
+                gpu.Update();
+                index++;
+
                 VideoCard card = new VideoCard();
-                card.GPU = gpu;
+                card.Name = gpu.Name;
+                card.Number = index;
 
                 foreach (Sensor sensor in gpu.Sensors)
                 {
@@ -26,6 +31,8 @@ namespace CUDA_Administrator.Calls.Devices
                         card.TemperatureSensors.Add(sensor);
                     else if (sensor.SensorType == SensorType.Control)
                         card.FanSensors.Add(sensor);
+                    else if (sensor.SensorType == SensorType.Clock)
+                        card.ClockSensors.Add(sensor);
                 }
 
                 cards.Add(card);
@@ -33,23 +40,23 @@ namespace CUDA_Administrator.Calls.Devices
             return cards;
         }
 
-        public List<GpuTemp> GetGpuTemps()
-        {
-            List<GpuTemp> gpuTemps = new List<GpuTemp>();
+        //public List<GpuTemp> GetGpuTemps()
+        //{
+        //    List<GpuTemp> gpuTemps = new List<GpuTemp>();
 
-            NvidiaGroup gpus = new NvidiaGroup();
-            foreach (NvidiaGPU gpu in gpus.Hardware)
-            {
-                gpu.Update();
-                gpuTemps.Add(new GpuTemp() 
-                { 
-                    Name = gpu.Name.Replace("NVIDIA", "").Replace("GeForce", "").Trim(),
-                    Temperature = gpu.Sensors.SingleOrDefault(x => x.SensorType == SensorType.Temperature).Value.ToString() 
-                });
-            }
+        //    NvidiaGroup gpus = new NvidiaGroup();
+        //    foreach (NvidiaGPU gpu in gpus.Hardware)
+        //    {
+        //        gpu.Update();
+        //        gpuTemps.Add(new GpuTemp() 
+        //        { 
+        //            Name = gpu.Name.Replace("NVIDIA", "").Replace("GeForce", "").Trim(),
+        //            Temperature = gpu.Sensors.SingleOrDefault(x => x.SensorType == SensorType.Temperature).Value.ToString() 
+        //        });
+        //    }
 
-            return gpuTemps;
-        }
+        //    return gpuTemps;
+        //}
 
     }
 }

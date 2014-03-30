@@ -37,7 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             UI.Renderers.Vs2010ToolStripRenderer vs2010ToolStripRenderer1 = new UI.Renderers.Vs2010ToolStripRenderer();
             UI.ColorTables.Vs2010DefaultToolStripColorTable vs2010DefaultToolStripColorTable1 = new UI.ColorTables.Vs2010DefaultToolStripColorTable();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tcMinerConsoles = new UI.Controls.Vs2010TabControl();
             this.tbDummyConsole = new System.Windows.Forms.TabPage();
             this.msMain = new UI.Controls.Vs2010MenuStrip();
@@ -48,7 +47,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDonate = new System.Windows.Forms.ToolStripMenuItem();
-            this.flpHardware = new System.Windows.Forms.FlowLayoutPanel();
             this.gbxMiners = new System.Windows.Forms.GroupBox();
             this.picEditMiner = new System.Windows.Forms.PictureBox();
             this.picAddMiner = new System.Windows.Forms.PictureBox();
@@ -67,12 +65,11 @@
             this.picMoveDownMiner = new System.Windows.Forms.PictureBox();
             this.tipMain = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flpHardware = new System.Windows.Forms.FlowLayoutPanel();
             this.tsMain = new UI.Controls.Vs2010ToolStrip();
             this.btnMinerAutomation = new System.Windows.Forms.ToolStripButton();
-            this.btnFanSpeed = new System.Windows.Forms.ToolStripSplitButton();
-            this.cbxTemps = new System.Windows.Forms.ToolStripComboBox();
+            this.flpMiners = new System.Windows.Forms.FlowLayoutPanel();
             this.tmrHardwareScan = new System.Windows.Forms.Timer(this.components);
-            this.notifyTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.tcMinerConsoles.SuspendLayout();
             this.msMain.SuspendLayout();
             this.gbxMiners.SuspendLayout();
@@ -97,12 +94,12 @@
             this.tcMinerConsoles.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tcMinerConsoles.HotTrack = true;
             this.tcMinerConsoles.ItemSize = new System.Drawing.Size(0, 26);
-            this.tcMinerConsoles.Location = new System.Drawing.Point(2, 278);
+            this.tcMinerConsoles.Location = new System.Drawing.Point(2, 300);
             this.tcMinerConsoles.Name = "tcMinerConsoles";
             vs2010TabControlRenderer1.ColorTable = vs2010DefaultTabControlColorTable1;
             this.tcMinerConsoles.Renderer = vs2010TabControlRenderer1;
             this.tcMinerConsoles.SelectedIndex = 0;
-            this.tcMinerConsoles.Size = new System.Drawing.Size(931, 236);
+            this.tcMinerConsoles.Size = new System.Drawing.Size(931, 238);
             this.tcMinerConsoles.TabIndex = 0;
             this.tcMinerConsoles.TabTextAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -111,7 +108,7 @@
             this.tbDummyConsole.Location = new System.Drawing.Point(4, 30);
             this.tbDummyConsole.Name = "tbDummyConsole";
             this.tbDummyConsole.Padding = new System.Windows.Forms.Padding(3);
-            this.tbDummyConsole.Size = new System.Drawing.Size(923, 202);
+            this.tbDummyConsole.Size = new System.Drawing.Size(923, 204);
             this.tbDummyConsole.TabIndex = 1;
             this.tbDummyConsole.Text = "Console";
             this.tbDummyConsole.UseVisualStyleBackColor = true;
@@ -195,16 +192,6 @@
             this.tsmiDonate.Size = new System.Drawing.Size(28, 20);
             this.tsmiDonate.Click += new System.EventHandler(this.ToolStripMenuItems_Click);
             // 
-            // flpHardware
-            // 
-            this.flpHardware.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.flpHardware.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(21)))), ((int)(((byte)(20)))));
-            this.flpHardware.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flpHardware.Location = new System.Drawing.Point(468, 520);
-            this.flpHardware.Name = "flpHardware";
-            this.flpHardware.Size = new System.Drawing.Size(461, 18);
-            this.flpHardware.TabIndex = 6;
-            // 
             // gbxMiners
             // 
             this.gbxMiners.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -218,9 +205,9 @@
             this.gbxMiners.Controls.Add(this.picMoveUpMiner);
             this.gbxMiners.Controls.Add(this.picMoveDownMiner);
             this.gbxMiners.ForeColor = System.Drawing.Color.White;
-            this.gbxMiners.Location = new System.Drawing.Point(6, 27);
+            this.gbxMiners.Location = new System.Drawing.Point(445, 27);
             this.gbxMiners.Name = "gbxMiners";
-            this.gbxMiners.Size = new System.Drawing.Size(927, 245);
+            this.gbxMiners.Size = new System.Drawing.Size(488, 267);
             this.gbxMiners.TabIndex = 9;
             this.gbxMiners.TabStop = false;
             this.gbxMiners.Text = "Miners";
@@ -232,7 +219,7 @@
             this.picEditMiner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picEditMiner.Enabled = false;
             this.picEditMiner.Image = global::CUDA_Administrator.Properties.Resources.edit;
-            this.picEditMiner.Location = new System.Drawing.Point(880, 223);
+            this.picEditMiner.Location = new System.Drawing.Point(441, 245);
             this.picEditMiner.Name = "picEditMiner";
             this.picEditMiner.Size = new System.Drawing.Size(16, 16);
             this.picEditMiner.TabIndex = 1;
@@ -246,7 +233,7 @@
             this.picAddMiner.BackColor = System.Drawing.Color.Transparent;
             this.picAddMiner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picAddMiner.Image = global::CUDA_Administrator.Properties.Resources.add;
-            this.picAddMiner.Location = new System.Drawing.Point(858, 223);
+            this.picAddMiner.Location = new System.Drawing.Point(419, 245);
             this.picAddMiner.Name = "picAddMiner";
             this.picAddMiner.Size = new System.Drawing.Size(16, 16);
             this.picAddMiner.TabIndex = 1;
@@ -283,7 +270,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dgvMiners.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMiners.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMiners.Size = new System.Drawing.Size(909, 198);
+            this.dgvMiners.Size = new System.Drawing.Size(470, 220);
             this.dgvMiners.TabIndex = 0;
             this.tipMain.SetToolTip(this.dgvMiners, "The miners higher on the list will be used first.\r\nAdditional miners will work as" +
         " failovers if your\r\nprimary miner fails after your specified amount\r\nof tries.");
@@ -308,13 +295,13 @@
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
+            this.colName.Width = 75;
             // 
             // colCommandLine
             // 
             this.colCommandLine.HeaderText = "Command Line";
             this.colCommandLine.Name = "colCommandLine";
             this.colCommandLine.ReadOnly = true;
-            this.colCommandLine.Width = 515;
             // 
             // colWorkerName
             // 
@@ -360,7 +347,7 @@
             this.picRefreshMiners.BackColor = System.Drawing.Color.Transparent;
             this.picRefreshMiners.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picRefreshMiners.Image = global::CUDA_Administrator.Properties.Resources.refresh;
-            this.picRefreshMiners.Location = new System.Drawing.Point(9, 223);
+            this.picRefreshMiners.Location = new System.Drawing.Point(9, 245);
             this.picRefreshMiners.Name = "picRefreshMiners";
             this.picRefreshMiners.Size = new System.Drawing.Size(16, 16);
             this.picRefreshMiners.TabIndex = 1;
@@ -375,7 +362,7 @@
             this.picRemoveMiner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picRemoveMiner.Enabled = false;
             this.picRemoveMiner.Image = global::CUDA_Administrator.Properties.Resources.remove;
-            this.picRemoveMiner.Location = new System.Drawing.Point(902, 223);
+            this.picRemoveMiner.Location = new System.Drawing.Point(463, 245);
             this.picRemoveMiner.Name = "picRemoveMiner";
             this.picRemoveMiner.Size = new System.Drawing.Size(16, 16);
             this.picRemoveMiner.TabIndex = 1;
@@ -390,7 +377,7 @@
             this.picMoveUpMiner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picMoveUpMiner.Enabled = false;
             this.picMoveUpMiner.Image = global::CUDA_Administrator.Properties.Resources.moveup;
-            this.picMoveUpMiner.Location = new System.Drawing.Point(31, 223);
+            this.picMoveUpMiner.Location = new System.Drawing.Point(31, 245);
             this.picMoveUpMiner.Name = "picMoveUpMiner";
             this.picMoveUpMiner.Size = new System.Drawing.Size(16, 16);
             this.picMoveUpMiner.TabIndex = 1;
@@ -405,7 +392,7 @@
             this.picMoveDownMiner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picMoveDownMiner.Enabled = false;
             this.picMoveDownMiner.Image = global::CUDA_Administrator.Properties.Resources.movedown;
-            this.picMoveDownMiner.Location = new System.Drawing.Point(53, 223);
+            this.picMoveDownMiner.Location = new System.Drawing.Point(53, 245);
             this.picMoveDownMiner.Name = "picMoveDownMiner";
             this.picMoveDownMiner.Size = new System.Drawing.Size(16, 16);
             this.picMoveDownMiner.TabIndex = 1;
@@ -429,12 +416,23 @@
             this.panel1.Controls.Add(this.msMain);
             this.panel1.Controls.Add(this.tcMinerConsoles);
             this.panel1.Controls.Add(this.gbxMiners);
+            this.panel1.Controls.Add(this.flpMiners);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(936, 540);
+            this.panel1.Size = new System.Drawing.Size(936, 564);
             this.panel1.TabIndex = 11;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Controls_Paint);
+            // 
+            // flpHardware
+            // 
+            this.flpHardware.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.flpHardware.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(21)))), ((int)(((byte)(20)))));
+            this.flpHardware.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flpHardware.Location = new System.Drawing.Point(743, 544);
+            this.flpHardware.Name = "flpHardware";
+            this.flpHardware.Size = new System.Drawing.Size(186, 17);
+            this.flpHardware.TabIndex = 13;
             // 
             // tsMain
             // 
@@ -444,9 +442,8 @@
             this.tsMain.GripMargin = new System.Windows.Forms.Padding(0);
             this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnMinerAutomation,
-            this.btnFanSpeed});
-            this.tsMain.Location = new System.Drawing.Point(0, 515);
+            this.btnMinerAutomation});
+            this.tsMain.Location = new System.Drawing.Point(0, 539);
             this.tsMain.Name = "tsMain";
             vs2010ToolStripRenderer1.ColorTable = vs2010DefaultToolStripColorTable1;
             vs2010ToolStripRenderer1.RoundedEdges = true;
@@ -457,55 +454,22 @@
             // 
             // btnMinerAutomation
             // 
-            this.btnMinerAutomation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnMinerAutomation.Image = global::CUDA_Administrator.Properties.Resources.start;
+            this.btnMinerAutomation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMinerAutomation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMinerAutomation.Name = "btnMinerAutomation";
-            this.btnMinerAutomation.Size = new System.Drawing.Size(23, 22);
+            this.btnMinerAutomation.Size = new System.Drawing.Size(90, 22);
             this.btnMinerAutomation.Tag = "STOP";
-            this.btnMinerAutomation.Text = "Miner Automation";
+            this.btnMinerAutomation.Text = "Start Miners";
             this.btnMinerAutomation.Click += new System.EventHandler(this.MinerAutomation_Click);
             // 
-            // btnFanSpeed
+            // flpMiners
             // 
-            this.btnFanSpeed.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnFanSpeed.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cbxTemps});
-            this.btnFanSpeed.Image = ((System.Drawing.Image)(resources.GetObject("btnFanSpeed.Image")));
-            this.btnFanSpeed.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFanSpeed.Name = "btnFanSpeed";
-            this.btnFanSpeed.Size = new System.Drawing.Size(77, 22);
-            this.btnFanSpeed.Text = "Fan Speed";
-            // 
-            // cbxTemps
-            // 
-            this.cbxTemps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTemps.Items.AddRange(new object[] {
-            "Auto",
-            "Default",
-            "100%",
-            "95%",
-            "90%",
-            "85%",
-            "80",
-            "75%",
-            "70%",
-            "65%",
-            "60%",
-            "55%",
-            "50%",
-            "45%",
-            "40%",
-            "35%",
-            "30%",
-            "25%",
-            "20%",
-            "15%",
-            "10%",
-            "5%"});
-            this.cbxTemps.Name = "cbxTemps";
-            this.cbxTemps.Size = new System.Drawing.Size(121, 23);
-            this.cbxTemps.SelectedIndexChanged += new System.EventHandler(this.cbxTemps_SelectedIndexChanged);
+            this.flpMiners.Location = new System.Drawing.Point(9, 33);
+            this.flpMiners.Name = "flpMiners";
+            this.flpMiners.Size = new System.Drawing.Size(427, 261);
+            this.flpMiners.TabIndex = 12;
+            this.flpMiners.Paint += new System.Windows.Forms.PaintEventHandler(this.Controls_Paint);
             // 
             // tmrHardwareScan
             // 
@@ -513,17 +477,12 @@
             this.tmrHardwareScan.Interval = 1000;
             this.tmrHardwareScan.Tick += new System.EventHandler(this.tmrHardwareScan_Tick);
             // 
-            // notifyTray
-            // 
-            this.notifyTray.Text = "CUDA Administrator";
-            this.notifyTray.Visible = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(936, 540);
+            this.ClientSize = new System.Drawing.Size(936, 564);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
@@ -564,7 +523,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
-        private System.Windows.Forms.FlowLayoutPanel flpHardware;
         private System.Windows.Forms.GroupBox gbxMiners;
         private System.Windows.Forms.ToolTip tipMain;
         private System.Windows.Forms.PictureBox picRemoveMiner;
@@ -575,14 +533,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer tmrHardwareScan;
         private UI.Controls.Vs2010ToolStrip tsMain;
-        private System.Windows.Forms.ToolStripSplitButton btnFanSpeed;
         private System.Windows.Forms.ToolStripButton btnMinerAutomation;
-        private System.Windows.Forms.ToolStripComboBox cbxTemps;
-        private System.Windows.Forms.NotifyIcon notifyTray;
         private System.Windows.Forms.PictureBox picRefreshMiners;
         private System.Windows.Forms.ToolStripMenuItem tsmiDonate;
         private System.Windows.Forms.PictureBox picEditMiner;
         private System.Windows.Forms.PictureBox picAddMiner;
+        private System.Windows.Forms.FlowLayoutPanel flpMiners;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGUID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
@@ -591,6 +547,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn colActive;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colFailover;
         private System.Windows.Forms.DataGridViewComboBoxColumn colRetryLimit;
+        private System.Windows.Forms.FlowLayoutPanel flpHardware;
     }
 }
 

@@ -35,8 +35,6 @@ namespace CUDA_Administrator
         Computer comp;
         MinerCall miner;
 
-        int TemperatureRun = 0;
-
         public frmMain()
         {
             InitializeComponent();
@@ -277,64 +275,30 @@ namespace CUDA_Administrator
             string strError = string.Empty;
             settings = settingsCall.GetSettings(ref strError);
 
-            foreach (GpuTemp gpu in devices.GetGpuTemps())
-            {
-                int temp = Convert.ToInt32(gpu.Temperature);
-                Color clr = Color.White;
-                if (temp < 70)
-                    clr = Color.Green;
-                else if (temp >= 70 && temp < 90)
-                    clr = Color.Orange;
-                else if (temp >= 90)
-                    clr = Color.Red;
-
-                if (flpHardware.Controls.Count > 0)
-                {
-                    foreach (Control ctrl in flpHardware.Controls)
-                        if (ctrl.Name == gpu.Name + "_TEMP")
-                        {
-                            ctrl.Text = temp.ToString() + " °C";
-                            ctrl.ForeColor = clr;
-                        }
-                }
-                else
-                {
-                    Label lblGPU = new Label() { Name = gpu.Name, Text = gpu.Name, ForeColor = Color.White, AutoSize = true };
-                    Label lblTemp = new Label() { Name = gpu.Name + "_TEMP", Text = temp.ToString() + " °C", ForeColor = clr, AutoSize = true };
-
-                    flpHardware.Controls.Add(lblTemp);
-                    flpHardware.Controls.Add(lblGPU);
-                }
-            }
-            
             foreach (VideoCard card in devices.GetVideoCards(ref strError))
             {
-                foreach (var sensor in card.FanSensors)
+                if (flpMiners.Controls.Count <= 0)
                 {
-                    btnFanSpeed.Text = "Fan Speed: " + sensor.Value.ToString() + "%";
-
-                    if (settings.Options.IsTempProtectionActivated)
+                    NvidiaDisplayControl display = new NvidiaDisplayControl();
+                    display.RefreshCard(card);
+                    display.Width = flpMiners.Width - 5;
+                    flpMiners.Controls.Add(display);    
+                }
+                
+                foreach (NvidiaDisplayControl ctrl in flpMiners.Controls)
+                {
+                    if (ctrl.IsAdded(card.Number))
+                        ctrl.RefreshCard(card);
+                    else
                     {
-                        if (TemperatureRun > 0)
-                            TemperatureRun++;
-
-                        if (card.TemperatureSensors[0].Value >= settings.Options.TemperatureMax)
-                        {
-                            this.InvokeThreadSafeMethod(() => SendNotificationToTray("Temperature Protection", "Temperature threshold reached. The Fan will run at 100% for 3 minutes and then run at 50%."));
-                            if (TemperatureRun == 0)
-                                TemperatureRun++; //We only increment here once so it kicks off the initial check
-
-                            sensor.Control.SetSoftware(100);
-                        }
-                        else if (!settings.Options.IsTempProtectionActivated || card.TemperatureSensors[0].Value < settings.Options.TemperatureMax && TemperatureRun >= 180)  //180 = 3 minutes. Let the fan run for 3 minutes
-                        {
-                            TemperatureRun = 0;
-                            sensor.Control.SetSoftware(50);
-                        }
+                        NvidiaDisplayControl display = new NvidiaDisplayControl();
+                        display.RefreshCard(card);
+                        display.Width = flpMiners.Width - 5;
+                        flpMiners.Controls.Add(display);
                     }
                 }
             }
-            
+
             foreach (var hrdwre in comp.Hardware)
             {
                 if (hrdwre.HardwareType == HardwareType.CPU)
@@ -377,13 +341,6 @@ namespace CUDA_Administrator
                     }
                 }
             }
-        }
-        private void SendNotificationToTray(string title, string message)
-        {
-            notifyTray.BalloonTipTitle = title;
-            notifyTray.BalloonTipText = message;
-            notifyTray.Icon = settingsCall.GetApplicationIcon(); ;
-            notifyTray.ShowBalloonTip(5000);
         }
         private bool IsMinerSetupValid(ref string message)
         {
@@ -506,8 +463,6 @@ namespace CUDA_Administrator
                                     settings.CpuMiners.Remove(cpuMiner);
                                     settings.CpuMiners.Insert(index + 1, cpuMiner);
                                 }
-
-                                
                                 
                                 if (!string.IsNullOrEmpty(strError))
                                 {
@@ -595,22 +550,6 @@ namespace CUDA_Administrator
 
         #endregion
 
-        private void cbxTemps_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string strError = string.Empty;
-            foreach (VideoCard card in devices.GetVideoCards(ref strError))
-            {
-                foreach (var sensor in card.FanSensors)
-                {
-                    if (cbxTemps.Text == "Auto")
-                        sensor.Control.SetAuto();
-                    else if (cbxTemps.Text == "Default")
-                        sensor.Control.SetDefault();
-                    else
-                        sensor.Control.SetSoftware(Convert.ToInt32(cbxTemps.Text.Replace("%", "")));
-                }
-            }
-        }
         private void MinerAutomation_Click(object sender, EventArgs e)
         {
             //When users change the values, they have to commit the edits by hitting return or F2
@@ -746,6 +685,7 @@ namespace CUDA_Administrator
         }
 
         #endregion
+
 
     }
 }
