@@ -77,17 +77,17 @@
     <Compile Include="Controls\MinerConsole.Designer.cs">
       <DependentUpon>MinerConsole.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\NvidiaDisplayControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\NvidiaDisplayControl.Designer.cs">
-      <DependentUpon>NvidiaDisplayControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\TablessTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\TablessTabControl.Designer.cs">
       <DependentUpon>TablessTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NvidiaDisplayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NvidiaDisplayControl.Designer.cs">
+      <DependentUpon>NvidiaDisplayControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Devices\GpuTemp.cs" />
     <Compile Include="Data\Devices\VideoCard.cs" />
